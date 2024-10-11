@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Realistic Ocean Waves</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: #1d3557; /* Deep ocean color */
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="waveCanvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById('waveCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    let waveLayers = [
+      { amplitude: 40, wavelength: 400, speed: 0.008, color: 'rgba(255, 255, 255, 0.6)', offset: 0 },
+      { amplitude: 30, wavelength: 300, speed: 0.01, color: 'rgba(255, 255, 255, 0.4)', offset: 0 },
+      { amplitude: 20, wavelength: 200, speed: 0.015, color: 'rgba(255, 255, 255, 0.3)', offset: 0 }
+    ];
+
+    function drawWaves() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw each wave layer with different speeds and amplitudes
+      waveLayers.forEach(layer => {
+        ctx.beginPath();
+        ctx.strokeStyle = layer.color;
+        ctx.lineWidth = 2;
+
+        for (let x = 0; x < canvas.width; x++) {
+          let y = canvas.height / 2 + layer.amplitude * Math.sin((x / layer.wavelength) + layer.offset);
+          ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+
+        // Update the wave offset for movement
+        layer.offset += layer.speed;
+      });
+
+      // Draw dynamic foam moving with the waves
+      drawFoam();
+
+      requestAnimationFrame(drawWaves);
+    }
+
+    function drawFoam() {
+      for (let i = 0; i < 50; i++) {
+        let foamX = Math.random() * canvas.width;
+        let foamY = canvas.height / 2 + Math.random() * 100 - 50; // Foam moves in the wave region
+        let foamSize = Math.random() * 5 + 2;
+
+        ctx.beginPath();
+        ctx.arc(foamX, foamY, foamSize, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.2})`;
+        ctx.fill();
+      }
+    }
+
+    drawWaves();
+  </script>
+</body>
+</html>

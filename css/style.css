@@ -1,0 +1,409 @@
+/* Font Face */
+@font-face {
+  font-family: 'Mainfont';
+  src: url('/fonts/CalinyMedium.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* General Reset and Base Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Mainfont', sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  color: #000000;
+  scrollbar-width: none;
+}
+
+/* Header Styles */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 15px 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  margin: 0;
+}
+
+.logo-container {
+  background-image: url('/images/Asset_3.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 150px;  /* Set the desired width of the logo */
+  height: 50px;  /* Set the desired height of the logo */
+  transform: scaleX(-1);  /* Flips horizontally */
+  
+}
+
+
+.nav-links a {
+  color: rgb(255, 255, 255);
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.header-buttons {
+  display: flex;
+  margin-left: auto;
+}
+
+.header-button {
+  background: linear-gradient(225deg, #10E6C2, #7D46F2);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 8px;
+  margin: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 40px;
+  height: 40px;
+}
+
+.header-button::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  background-position: center;
+}
+
+.header-button.twitter-hover::before {
+  background-image: url('/images/twitter1.svg');
+}
+
+.header-button.telegram-hover::before {
+  background-image: url('/images/telegram1.svg');
+}
+
+.header-button:hover.twitter-hover::before {
+  background-image: url('/images/twitter.svg');
+}
+
+.header-button:hover.telegram-hover::before {
+  background-image: url('/images/telegram.svg');
+}
+
+.header-button:hover {
+  background: linear-gradient(225deg, #7D46F2, #10E6C2); /* Change gradient direction on hover */
+}
+
+/* Section Styles */
+.section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-sizing: border-box;
+  padding: 20px;
+  background-color: #3f5e97;/*#3f5e97;*/
+}
+.logo {
+  font-size: 150px;
+  margin-bottom: 20px;
+  color: white;
+  display: inline-block;
+  text-align: center;
+  line-height: 0.85;
+  letter-spacing: -5px;
+  font-weight: 400;
+  text-shadow:
+    -4px -4px 0 #000,
+     4px -4px 0 #000,
+    -4px  4px 0 #000,
+     4px  4px 0 #000,
+    -4px  0 0 #000,
+     4px  0 0 #000,
+     0 -4px 0 #000,
+     0  4px 0 #000;
+}
+
+.content {
+   bottom: -20px; 
+  z-index: 5;
+  text-align: center;
+  position: relative;
+  color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(225deg, #10E6C2, #7D46F2);
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  position: relative;
+  max-width: 60vw;
+  box-sizing: border-box;
+}
+
+.contact-info span {
+  margin-right: 40px;
+}
+
+.copy-button {
+  position: relative;
+  background: linear-gradient(225deg, #10E6C2, #7D46F2);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+}
+
+.copy-button::before {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  background-position: center;
+  background-image: url('/images/copy.svg');
+}
+
+.copy-button:hover::before {
+  background-image: url('/images/copy1.svg');
+}
+
+.copy-button:hover {
+  background: linear-gradient(225deg, #7D46F2, #10E6C2); /* Change gradient direction and colors on hover */
+}
+
+.contact-button {
+  display: inline-block;
+  background: linear-gradient(225deg, #10E6C2, #7D46F2);
+  color: white;
+  padding: 10px 20px;
+  font-size: 40px;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.contact-button:hover {
+  color:#000;
+  background: linear-gradient(225deg, #7D46F2,#10E6C2);
+}
+/* Background Section Styles */
+.maindolph {
+  margin: 50px;
+  background-image: url('/images/Asset_3.svg'); /* Adjust the path as necessary */
+  /* background-size: cover; Ensures the image covers the entire section */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents tiling */
+  height: 50%; /* Ensures the section takes full viewport height */
+  width: 100%; /* Ensures the section takes full viewport width */
+}
+
+/* Footer Styles */
+footer {
+  z-index: 1000;
+  text-align: center;
+  padding: 20px;
+  /* background: linear-gradient(225deg, #10E6C2, #7D46F2); */
+  color: white;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(0, 139, 139);
+  position: relative;
+}
+
+/* Separator Styles */
+.separator {
+  height: 101px;
+  width: 100%;
+  background-image: url("/images/sep2.gif");
+  background-size: auto 100%;
+  background-repeat: repeat-x;
+  background-position: 0 0;
+  position: relative;
+  background-color: #3f5e97;
+  overflow: hidden;
+  animation: moveSeparator 10s linear infinite;
+}
+
+@keyframes moveSeparator {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+.section2 {
+  z-index: 1;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center align items horizontally */
+  justify-content: center; /* Center align items vertically */
+  font-size: 2rem;
+  box-sizing: border-box;
+  padding: 20px;
+  background-color: #3f5e97;
+}
+
+/* About Heading Styles */
+.about-heading {
+  font-size: 60px; /* Adjust the size as needed */
+  color: white; /* Adjust the color */
+  text-align: center; /* Center the text */
+  margin-bottom: 20px; /* Space between "About" and the dolphin image */
+  font-weight: bold;
+  text-transform: uppercase; /* Optional: to make the text uppercase */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Optional: for text shadow effect */
+}
+
+.dolphbig{
+  background-image: url('/images/Asset_2.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 500px;  /* Set the desired width of the logo */
+  height: 500px;  /* Set the desired height of the logo */
+}
+.textblk{
+  background-color: #10E6C2;
+  width: 700px;  /* Set the desired width of the logo */
+  height: 450px;  /* Set the desired height of the logo */
+  border-radius: 50px;
+  text-align: justify;
+}
+.blktxt{
+  padding:  25px;
+}
+.bubble {
+  position: absolute;
+  bottom: 0px; /* Start below the viewport */
+  opacity: 1;
+  transition: transform 7s ease-in, opacity 7s ease-in; /* Increase duration to 7s */
+}
+
+.dolphroad{
+
+background-image: url(/images/Asset_1.svg);
+background-size: contain;
+background-repeat: no-repeat;
+background-position: center;
+width: 900px;  /* Set the desired width of the logo */
+height: 900px;  /* Set the desired height of the logo */
+} 
+
+.txtroad{
+  background-image: url(/SVG/board.svg);
+  background-size: contain;
+background-repeat: no-repeat;
+background-position: center;
+width: 1000px;  /* Set the desired width of the logo */
+height: 1000px;  /* Set the desired height of the logo */
+top:50px;
+position: relative;
+}
+
+#waveCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Send the canvas to the background */
+}
+
+#lightCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* z-index: -2;  Make sure it's behind the waveCanvas and other content */
+}
+
+.section3 {
+  position: relative;
+  height: 100vh;  /* Full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3f5e97;
+  
+}
+
+.grand {
+  background-image: url(/SVG/Asset3.svg); /* path to your SVG */
+  background-size: cover; /* Ensures the SVG covers the entire viewport */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-position: center; /* Centers the image */
+  width: 100vw;  /* Full viewport width */
+  height: 100vh;  /* Full viewport height */
+  overflow: hidden; /* Prevents any overflow of content */
+
+  display: flex; /* Enable flexbox */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+}
+
+.contact-button1 {
+  display: inline-block;
+  background: linear-gradient(225deg, #10E6C2, #7D46F2);
+  color: white;
+  padding: 10px 20px;
+  font-size: 40px;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 10px;
+  position: relative;
+  top:150px;
+}
+
+.contact-button1:hover {
+  color: #000;
+  background: linear-gradient(225deg, #7D46F2, #10E6C2);
+}
+
+.tokenomics-text{
+  position: relative;
+  left: 350px;
+  top:150px;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ocean Wave Animation</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="waveCanvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById('waveCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Resize the canvas to fill the window dynamically
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    let waveAmplitude = 40;  // Height of the wave
+    let waveLength = 200;    // Width of the wave
+    let waveSpeed = 0.03;    // Speed of the wave movement
+    let waveOffset = 0;      // Phase shift for wave animation
+
+    function drawWave() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+
+      // Set wave color and style
+      ctx.fillStyle = '#1E90FF';
+      ctx.strokeStyle = '#1E90FF';
+      ctx.lineWidth = 2;
+
+      // Start drawing the wave
+      ctx.beginPath();
+      for (let x = 0; x < canvas.width; x++) {
+        let y = canvas.height / 2 + waveAmplitude * Math.sin((x / waveLength) + waveOffset);
+        ctx.lineTo(x, y);
+      }
+
+      // Fill the area below the wave
+      ctx.lineTo(canvas.width, canvas.height);
+      ctx.lineTo(0, canvas.height);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      // Animate wave by changing offset
+      waveOffset += waveSpeed;
+
+      // Call drawWave again for the animation loop
+      requestAnimationFrame(drawWave);
+    }
+
+    // Start animation
+    drawWave();
+  </script>
+</body>
+</html>

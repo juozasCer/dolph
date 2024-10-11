@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Scale Animation</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+      background-color: #ffffff; /* Black background to simulate water */
+    }
+  </style>
+</head>
+<body>
+  <canvas id="waveCanvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById('waveCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Resize the canvas to fill the window dynamically
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    let waveSpeed = 0.02; // Speed of wave movement
+    let offset = 0; // Offset for the wave animation
+
+    // Function to generate random parameters
+    function generateRandomParameters() {
+      return {
+        amplitude: Math.random() * 50 + 10,  // Random amplitude between 10 and 60
+        wavelength: Math.random() * 150 + 50 // Random wavelength between 50 and 200
+      };
+    }
+
+    let waves = Array.from({length: 10}, generateRandomParameters);
+
+    function drawWaves() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+
+      ctx.strokeStyle = '#000'; // Set stroke color to white
+      ctx.lineWidth = 1.5; // Line thickness
+
+      // Draw waves with random parameters
+      waves.forEach(({amplitude, wavelength}) => {
+        // Horizontal Waves
+        for (let y = 0; y < canvas.height; y += wavelength) {
+          ctx.beginPath();
+          for (let x = 0; x < canvas.width; x++) {
+            let yOffset = amplitude * Math.sin((x / wavelength) + offset);
+            ctx.lineTo(x, y + yOffset);
+          }
+          ctx.stroke();
+        }
+
+        // Vertical Waves
+        for (let x = 0; x < canvas.width; x += wavelength) {
+          ctx.beginPath();
+          for (let y = 0; y < canvas.height; y++) {
+            let xOffset = amplitude * Math.sin((y / wavelength) + offset);
+            ctx.lineTo(x + xOffset, y);
+          }
+          ctx.stroke();
+        }
+      });
+
+      // Animate wave by changing the offset
+      offset += waveSpeed;
+
+      // Update wave parameters over time for dynamic effect
+      waves = waves.map(() => generateRandomParameters());
+
+      // Call drawWaves again for the animation loop
+      requestAnimationFrame(drawWaves);
+    }
+
+    // Start animation
+    drawWaves();
+  </script>
+</body>
+</html>
