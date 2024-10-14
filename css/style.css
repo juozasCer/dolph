@@ -1,7 +1,7 @@
 /* Font Face */
 @font-face {
   font-family: 'Mainfont';
-  src: url('/fonts/CalinyMedium.otf') format('opentype');
+  src: url('/Fonts/SuperWater-PVoOm.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -305,7 +305,7 @@ footer {
 .textblk{
   background-color: #10E6C2;
   width: 700px;  /* Set the desired width of the logo */
-  height: 450px;  /* Set the desired height of the logo */
+  height: 490px;  /* Set the desired height of the logo */
   border-radius: 50px;
   text-align: justify;
 }
@@ -342,11 +342,12 @@ position: relative;
 
 #waveCanvas {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* Send the canvas to the background */
+  top: 200px;
+  width: 100px;
+  height: 100vh;
+  z-index: 1; 
+  background-position: center;
+  background-size: contain;
 }
 
 #lightCanvas {
@@ -406,4 +407,32 @@ position: relative;
   position: relative;
   left: 350px;
   top:150px;
+}
+
+/* Container for sunset, sun, and water */
+.sunset {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+  z-index: -3; /* Ensure it's behind the content */
+  display: flex;
+  flex-direction: column; /* Stack sun and water vertically */
+}
+
+.sun {
+  background-image: url('../SVG/sun.svg');
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 50%; /* Takes half the height of the sunset container */
+  z-index: -2; /* Sun should be above the canvas but behind the content */
+  position: relative;
+}
+
+#watercanvas {
+  width: 100vw;
+  height: 50%; /* Takes the other half of the height */
+  z-index: -1; /* Canvas should be behind everything except the sunset */
+  position: relative;
 }

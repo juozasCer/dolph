@@ -1,54 +1,54 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const canvas = document.getElementById('waveCanvas');
-  const ctx = canvas.getContext('2d');
+// Canvas setup
+const canvas = document.getElementById('waterCanvas');
+const ctx = canvas.getContext('2d');
 
-  // Function to resize canvas to match the window size
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight / 2;
 
-  // Call the resize function initially
-  resizeCanvas();
+const waterImage = new Image();
+waterImage.src = '../SVG/water.svg';  // Load the water SVG
 
-  // Redo the canvas size on window resize
-  window.addEventListener('resize', resizeCanvas);
+let time = 0; // For wave movement
 
-  let img = new Image();
-  img.src = '/images/vawe.png'; // Replace with the correct path to your image
+// Function to apply the wavy effect
+function drawWave() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  img.onload = function () {
-    animateWave();
-  };
+    const waveAmplitude = 20; // Height of the wave
+    const waveFrequency = 0.02; // Wave frequency (more = more waves)
+    const waveSpeed = 0.1; // Speed of the wave movement
 
-  function animateWave() {
-    const waveHeight = 20; // Max height of the wave distortion
-    const waveFrequency = 0.01; // Frequency of the wave (how tightly packed the waves are)
-    const waveSpeed = 0.05; // Speed at which the wave moves
-    let offset = 0;
+    const stripHeight = 10; // Each "strip" of the image that will be warped
+    const extraWidth = 100; // Extra width to hide wave corners
 
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+    // Loop through the image height in strips
+    for (let y = 0; y < canvas.height; y += stripHeight) {
+        // Calculate the horizontal offset for each strip using a sine wave
+        const xOffset = Math.sin((y * waveFrequency) + time) * waveAmplitude;
 
-      const sliceWidth = 5; // Width of each vertical slice of the image
-
-      for (let i = 0; i < canvas.width; i += sliceWidth) {
-        // Calculate the vertical wave offset for each slice
-        const waveOffset = Math.sin(i * waveFrequency + offset) * waveHeight;
-
-        // Draw a vertical slice of the image with the calculated wave offset
+        // Draw each strip of the image, offset horizontally
         ctx.drawImage(
-          img,                         // Image source
-          i, 0, sliceWidth, img.height, // Source slice based on image height
-          i, waveOffset, sliceWidth, canvas.height // Destination slice scaled to canvas height
+            waterImage,
+            0, y, canvas.width, stripHeight,         // Source image (start at 0)
+            -extraWidth / 2 + xOffset, y,            // Draw with an offset, center it with -extraWidth / 2
+            canvas.width + extraWidth, stripHeight   // Draw with extra width to hide edges
         );
-      }
-
-      offset += waveSpeed; // Increment the offset for smooth wave animation
-
-      requestAnimationFrame(draw); // Loop the animation
     }
 
-    draw(); // Start the animation loop
-  }
+    // Increment time to animate the wave
+    time += waveSpeed;
+
+    // Repeat the drawing for the next frame
+    requestAnimationFrame(drawWave);
+}
+
+// Start the wave animation once the image is loaded
+waterImage.onload = () => {
+    drawWave();
+};
+
+// Handle canvas resizing
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight / 2;
 });
