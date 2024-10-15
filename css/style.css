@@ -448,6 +448,11 @@ position: relative;
   .dolphroad{
     height: 400px;
   }
+  .tokenomics-text {
+    position: relative;
+    text-align: center;
+    top: 280px;
+  }
 }
 
 @media screen and (max-width: 660px) {
@@ -460,5 +465,11 @@ position: relative;
 
   .dolphroad{
     height: 400px;
+  }
+
+  .tokenomics-text {
+    position: relative;
+    text-align: center;
+    top: 310px;
   }
 }
