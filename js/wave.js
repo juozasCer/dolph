@@ -7,7 +7,7 @@ canvas.width = window.innerWidth;
 canvas.height = (window.innerHeight / 2)+0;
 
 const waterImage = new Image();
-waterImage.src = 'SVG/artboard7.svg';  // Load the water SVG
+waterImage.src = '/SVG/artboard7.svg';  // Load the water SVG
 
 let time = 0; // For wave movement
 
