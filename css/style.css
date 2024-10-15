@@ -36,6 +36,7 @@ header {
   flex-grow: 1;
   justify-content: center;
   margin: 0;
+  font-size: 35px;
 }
 
 .logo-container {
@@ -138,7 +139,7 @@ header {
 }
 
 .content {
-   bottom: -20px; 
+  top:120px;
   z-index: 5;
   text-align: center;
   position: relative;
@@ -160,7 +161,7 @@ header {
 .contact-info {
   display: flex;
   align-items: center;
-  background: linear-gradient(225deg, #10E6C2, #7D46F2);
+  /* background: linear-gradient(225deg, #10E6C2, #7D46F2); */
   padding: 10px;
   border-radius: 10px;
   border: 1px solid #ccc;
@@ -225,13 +226,18 @@ header {
 }
 /* Background Section Styles */
 .maindolph {
-  margin: 50px;
+  z-index: 5;
   background-image: url('/images/Asset_3.svg'); /* Adjust the path as necessary */
   /* background-size: cover; Ensures the image covers the entire section */
   background-position: center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents tiling */
-  height: 50%; /* Ensures the section takes full viewport height */
+  height: 200px; /* Ensures the section takes full viewport height */
   width: 100%; /* Ensures the section takes full viewport width */
+  position: absolute;
+  bottom: 100px;
+}
+canvas{
+  justify-content: center;
 }
 
 /* Footer Styles */
@@ -256,7 +262,7 @@ footer {
   background-repeat: repeat-x;
   background-position: 0 0;
   position: relative;
-  background-color: #3f5e97;
+  /* background-color: #f80707; */
   overflow: hidden;
   animation: moveSeparator 10s linear infinite;
 }
@@ -271,17 +277,44 @@ footer {
 }
 .section2 {
   z-index: 1;
-  position: relative;
-  height: 100vh;
+  position: relative; 
+  height: 100vh; 
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  align-items: center; /* Center align items horizontally */
-  justify-content: center; /* Center align items vertically */
-  font-size: 2rem;
-  box-sizing: border-box;
-  padding: 20px;
+  flex-direction: column; 
+  align-items: center; 
+  /* justify-content: flex-end;  */
+  font-size: 2rem; 
+  box-sizing: border-box; 
+  padding: 0;  
+  width: 100%;
   background-color: #3f5e97;
+  overflow: hidden;
 }
+
+.sun {
+  background-image: url('../SVG/Artboard6.svg');
+  background-size: cover ;/* Ensures the SVG covers the entire container */
+  background-position: center;
+  background-repeat: no-repeat; /* Prevents the SVG from repeating */
+  top: 0px;
+  width: 100vw; 
+  height: 60%; 
+  position: relative; 
+  z-index: -1; 
+  /* border: 1px solid black; */
+}
+
+
+#waterCanvas {
+  width: 100vw; 
+  height: 40%; 
+  background-size: cover;
+  position: relative; 
+  background-repeat: repeat-x;
+  z-index: -20;
+  /* border:1px solid rgb(111, 247, 0); */
+}
+
 
 /* About Heading Styles */
 .about-heading {
@@ -320,7 +353,6 @@ footer {
 }
 
 .dolphroad{
-
 background-image: url(/images/Asset_1.svg);
 background-size: contain;
 background-repeat: no-repeat;
@@ -405,34 +437,6 @@ position: relative;
 
 .tokenomics-text{
   position: relative;
-  left: 350px;
+  text-align: center;
   top:150px;
-}
-
-/* Container for sunset, sun, and water */
-.sunset {
-  position: absolute;
-  top: 0;
-  width: 100vw;
-  height: 100%;
-  z-index: -3; /* Ensure it's behind the content */
-  display: flex;
-  flex-direction: column; /* Stack sun and water vertically */
-}
-
-.sun {
-  background-image: url('../SVG/sun.svg');
-  background-size: cover;
-  background-position: center;
-  width: 100vw;
-  height: 50%; /* Takes half the height of the sunset container */
-  z-index: -2; /* Sun should be above the canvas but behind the content */
-  position: relative;
-}
-
-#watercanvas {
-  width: 100vw;
-  height: 50%; /* Takes the other half of the height */
-  z-index: -1; /* Canvas should be behind everything except the sunset */
-  position: relative;
 }

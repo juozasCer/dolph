@@ -1,12 +1,13 @@
+
 // Canvas setup
 const canvas = document.getElementById('waterCanvas');
 const ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth;
-canvas.height = window.innerHeight / 2;
+canvas.height = (window.innerHeight / 2)+0;
 
 const waterImage = new Image();
-waterImage.src = '../SVG/water.svg';  // Load the water SVG
+waterImage.src = '../SVG/artboard7.svg';  // Load the water SVG
 
 let time = 0; // For wave movement
 
@@ -19,7 +20,7 @@ function drawWave() {
     const waveSpeed = 0.1; // Speed of the wave movement
 
     const stripHeight = 10; // Each "strip" of the image that will be warped
-    const extraWidth = 100; // Extra width to hide wave corners
+    const extraWidth = 800; // Extra width to hide wave corners
 
     // Loop through the image height in strips
     for (let y = 0; y < canvas.height; y += stripHeight) {
