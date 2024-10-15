@@ -445,6 +445,9 @@ position: relative;
   .nav-links {
     font-size: 20px;
   }
+  .dolphroad{
+    height: 400px;
+  }
 }
 
 @media screen and (max-width: 660px) {
@@ -453,5 +456,9 @@ position: relative;
   }
   .header-button{
     scale: 0.5;
+  }
+
+  .dolphroad{
+    height: 400px;
   }
 }
