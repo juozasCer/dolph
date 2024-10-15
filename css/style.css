@@ -166,7 +166,7 @@ header {
   border-radius: 10px;
   border: 1px solid #ccc;
   position: relative;
-  max-width: 60vw;
+  /* max-width: 60vw; */
   box-sizing: border-box;
 }
 
@@ -439,4 +439,15 @@ position: relative;
   position: relative;
   text-align: center;
   top:150px;
+}
+@media screen and (max-width: 870px) {
+  .nav-links {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .nav-links {
+    font-size: 15px;
+  }
 }
