@@ -236,9 +236,9 @@ header {
   position: absolute;
   bottom: 100px;
 }
-canvas{
+/* canvas{
   justify-content: center;
-}
+} */
 
 /* Footer Styles */
 footer {
