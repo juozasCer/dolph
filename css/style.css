@@ -140,7 +140,7 @@ header {
 
 .content {
   top:120px;
-  z-index: 5;
+  z-index: 0;
   text-align: center;
   position: relative;
   color: white;
@@ -208,6 +208,7 @@ header {
 }
 
 .contact-button {
+  z-index: 50;
   display: inline-block;
   background: linear-gradient(225deg, #10E6C2, #7D46F2);
   color: white;
@@ -217,7 +218,7 @@ header {
   border-radius: 10px;
   text-decoration: none;
   cursor: pointer;
-  margin-top: 10px;
+  margin: 10px;
 }
 
 .contact-button:hover {
@@ -226,15 +227,15 @@ header {
 }
 /* Background Section Styles */
 .maindolph {
-  z-index: 5;
+  z-index: 1;
   background-image: url('/images/Asset_3.svg'); /* Adjust the path as necessary */
   /* background-size: cover; Ensures the image covers the entire section */
   background-position: center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents tiling */
   height: 200px; /* Ensures the section takes full viewport height */
   width: 100%; /* Ensures the section takes full viewport width */
-  position: absolute;
-  bottom: 100px;
+  position: relative;
+  top: 150px;
 }
 /* canvas{
   justify-content: center;
@@ -321,7 +322,7 @@ footer {
   font-size: 60px; /* Adjust the size as needed */
   color: white; /* Adjust the color */
   text-align: center; /* Center the text */
-  margin-bottom: 20px; /* Space between "About" and the dolphin image */
+  margin: 20px; /* Space between "About" and the dolphin image */
   font-weight: bold;
   text-transform: uppercase; /* Optional: to make the text uppercase */
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Optional: for text shadow effect */
@@ -448,6 +449,9 @@ position: relative;
 
 @media screen and (max-width: 660px) {
   .nav-links {
-    font-size: 15px;
+    font-size: 10px;
+  }
+  .header-button{
+    scale: 0.5;
   }
 }

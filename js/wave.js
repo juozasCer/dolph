@@ -3,8 +3,8 @@
 const canvas = document.getElementById('waterCanvas');
 const ctx = canvas.getContext('2d');
 
-canvas.width = window.innerWidth;
-canvas.height = (window.innerHeight / 2)+0;
+canvas.width = 2000;
+canvas.height = 500;
 
 const waterImage = new Image();
 waterImage.src = 'https://dolph-rosy.vercel.app/SVG/Artboard7.svg';  // Load the water SVG
@@ -49,7 +49,7 @@ waterImage.onload = () => {
 };
 
 // Handle canvas resizing
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight / 2;
-});
+// window.addEventListener('resize', () => {
+//     canvas.width = window.innerWidth;
+//     canvas.height = window.innerHeight / 2;
+// });
